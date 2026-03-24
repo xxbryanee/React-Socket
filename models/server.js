@@ -17,18 +17,9 @@ class server
 
     constructor()
         {
-            
-              this.app = express();
-              this.port = process.env.PORT || 4000;
-              this.server = http.createServer(this.app);
-              this.io = socketio(this.server, {});
-            
-
-            //socket server
-
-            //this.io = require('socket.io')(this.server);
-
-            //Configuraciones de sockets
+            this.app = express();
+            this.port = process.env.PORT || 8080;
+            this.server = http.createServer(this.app);
             this.io = socketio(this.server, {});
         }
 

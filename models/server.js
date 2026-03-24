@@ -6,6 +6,9 @@ const http = require('http')
 const socketio = require('socket.io');
 //path para manejar rutas
 const path = require('path');
+
+
+
 //importar sockets
 const Sockets = require('./sockets.js');
 
@@ -17,12 +20,8 @@ class server
 
             this.app =  express();
             this.port = process.env.PORT;
-            this.io = socketio(this.server, {
-    cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
-});
+            this.io = socketio(this.server)
+                 
 
             //http server
             this.server = http.createServer(this.app);  
@@ -40,6 +39,8 @@ class server
         {
             //desplegar el directorio publico
             this.app.use(express.static(path.resolve(__dirname, '../public')));//__dirname es la ruta del archivo actual, ../public es la ruta del directorio publico
+
+            
         }
 
         configurarSockets()

@@ -17,15 +17,12 @@ class server
 
     constructor()
         {
-
-            this.app =  express();
-            this.port = process.env.PORT;
-            this.io = socketio(this.server)
-                 
-
-            //http server
-            this.server = http.createServer(this.app);  
-
+            
+              this.app = express();
+              this.port = process.env.PORT || 4000;
+              this.server = http.createServer(this.app);
+              this.io = socketio(this.server, {});
+            
 
             //socket server
 
